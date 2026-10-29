@@ -1,0 +1,13 @@
+[build]
+  command = "cd frontend && npm install && npm run build"
+  publish = "frontend/build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  CI = "false"
+
+# Single-page app: send every path to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
