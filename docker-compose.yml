@@ -1,0 +1,23 @@
+services:
+  nexflow:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Leave NEXFLOW_SECRET empty to auto-generate one and persist it in the data volume.
+      NEXFLOW_SECRET: ${NEXFLOW_SECRET:-}
+      NEXFLOW_SEED_DEMO: ${NEXFLOW_SEED_DEMO:-false}
+      NEXFLOW_ALLOW_REGISTRATION: ${NEXFLOW_ALLOW_REGISTRATION:-true}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.openai.com/v1}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+    volumes:
+      - nexflow_data:/data
+    restart: unless-stopped
+
+volumes:
+  nexflow_data:

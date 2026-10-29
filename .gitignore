@@ -1,0 +1,14 @@
+node_modules/
+build/
+dist/
+__pycache__/
+*.pyc
+.env
+.env.local
+data/
+*.db
+*.db-wal
+*.db-shm
+.nexflow_secret
+.DS_Store
+npm-debug.log*
